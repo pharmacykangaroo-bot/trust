@@ -1,4 +1,4 @@
-/* Trot & Thrive — one small vanilla script. No dependencies.
+/* Trust — one small vanilla script. No dependencies.
    Everything here is progressive: the page is fully usable without it. */
 (() => {
   'use strict';
@@ -8,7 +8,7 @@
 
   /* ---- Single source of truth for contact details (also mirrored in index.html for no-JS) ---- */
   const CONTACT = {
-    brand: 'Trot & Thrive',
+    brand: 'Trust',
     phoneE164: '18286906688',          // digits only, used for wa.me + tel:
     phoneDisplay: '+1 828 690 6688',
   };
@@ -205,13 +205,13 @@
     kitButtons.forEach((b) => {
       const on = picked.includes(b.dataset.kit);
       b.setAttribute('aria-pressed', String(on));
-      $('.kit__label', b).textContent = on ? 'added to my kit' : 'add to my kit';
+      $('.kit__label', b).textContent = on ? 'added to my list' : 'add to my list';
       b.closest('.kit').classList.toggle('is-picked', on);
     });
     if (kitCount) {
       kitCount.textContent = picked.length
-        ? `In your kit: ${picked.join(', ')}. It's already in the form below.`
-        : 'Your kit is empty. Tap a card to start.';
+        ? `On your list: ${picked.join(', ')}. It's already in the form below.`
+        : 'Your list is empty. Tap a product to start.';
     }
   };
   kitButtons.forEach((b) => {
@@ -256,9 +256,9 @@
       ['Name', f.name], ['Phone/WhatsApp', f.phone], ['City & state', f.city],
       ['Colourway', f.colour], ['Saddle type', f.type], ['Quantity', f.qty || '1'], ['Message', f.msg],
     ]),
-    wellness: (f) => lines(`Hi ${CONTACT.brand}! I'm interested in your wellness kits.`, [
+    wellness: (f) => lines(`Hi ${CONTACT.brand}! I'm interested in these wellness products.`, [
       ['Name', f.name], ['Phone/WhatsApp', f.phone], ['City & state', f.city],
-      ['Kits', f.kits || 'Not sure yet, help me choose'], ['Message', f.msg],
+      ['Products', f.kits || 'Not sure yet, help me choose'], ['Message', f.msg],
     ]),
   };
 
