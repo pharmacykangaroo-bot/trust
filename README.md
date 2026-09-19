@@ -14,7 +14,7 @@ Pure static: `index.html`, `css/`, `js/app.js`, `assets/`. No build step, no dep
 | Brand name ("Trot & Thrive" / `trot&thrive`) | find & replace in `index.html` (title, meta, JSON-LD, wordmarks, copy) and `CONTACT.brand` in `js/app.js`; also regenerate `assets/og.jpg` (1200x630, the wordmark is baked in) and update `assets/favicon.svg`, `assets/logo.png`, `assets/apple-touch-icon.png` |
 | Phone / WhatsApp number | `CONTACT` in `js/app.js` (rewrites every `tel:`, `wa.me` link and phone label at runtime) **and** the same links + JSON-LD `telephone` in `index.html` (kept in HTML so the page works without JS) |
 | Ship-from address | `index.html`: FAQ "Where do you ship from?", `#contact`, footer, JSON-LD `address`, and the Google Maps link |
-| Theme colours / fonts | top of `css/base.css` (`[data-theme="saddle"]` and `[data-theme="wellness"]` blocks) |
+| Theme colours / fonts | colours: the `:root[data-theme="saddle"|"wellness"]` blocks at the top of `css/base.css`; display fonts: those blocks **and** the per-section font block right below them (`main > *, .footer` / `main > [data-world="wellness"]`, `css/base.css` ~L73-82) |
 | Product photos | `assets/saddle-bag-noir-gold.webp`, `assets/saddle-bag-blaze.webp` (light studio backdrop; they are blended onto light clay cards) |
 | Social preview | `assets/og.jpg` (1200x630) |
 

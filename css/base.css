@@ -443,6 +443,7 @@ html.js [data-split] .w { display: inline-block; opacity: 0; transform: translat
 .wa-float:hover { transform: translateY(-4px) rotate(-6deg); }
 html.js .wa-float:not(.is-on) { opacity: 0; transform: scale(.6); pointer-events: none; }
 body:has(.form :focus-within) .wa-float { opacity: 0; pointer-events: none; }
+@media (max-width: 900px) { html:not(.js) .wa-float { display: none; } }
 @media (max-width: 560px) { .wa-float { width: 52px; height: 52px; } .wa-float svg { width: 26px; height: 26px; } }
 
 .cursor-blob { display: none; }

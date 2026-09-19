@@ -123,7 +123,10 @@
       });
     }
 
-    if (waFloat) waFloat.classList.toggle('is-on', window.scrollY > vh * 0.6 && !busy.size);
+    // Phones: show the bubble only while scrolling up, so it never parks on copy or controls.
+    const y = window.scrollY;
+    if (waFloat) waFloat.classList.toggle('is-on', y > vh * 0.6 && !busy.size && (window.innerWidth > 560 || y < lastY));
+    lastY = y;
 
     if (menu && menu.open && Math.abs(window.scrollY - menuOpenedAt) > 40) menu.open = false;
   };
@@ -140,6 +143,7 @@
 
   const menu = $('.menu');
   let menuOpenedAt = 0;
+  let lastY = window.scrollY;
 
   let ticking = false;
   const requestTick = () => {
@@ -228,7 +232,7 @@
     phone: (v) => {
       const digits = v.replace(/\D/g, '');
       if (!v.trim()) return 'We need a phone or WhatsApp number to reply.';
-      if (!PHONE_CHARS.test(v) || digits.length < 7 || digits.length > 15) return 'That number looks off. Include your country code, e.g. +91 98765 43210.';
+      if (!PHONE_CHARS.test(v) || digits.length < 7 || digits.length > 15) return 'That number looks off. Include your country code, e.g. +1 212 555 0100.';
       return '';
     },
     qty: (v, input) => {
@@ -249,11 +253,11 @@
 
   const composers = {
     saddle: (f) => lines(`Hi ${CONTACT.brand}! I'd like a quote for a saddle bag.`, [
-      ['Name', f.name], ['Phone/WhatsApp', f.phone], ['City & country', f.city],
+      ['Name', f.name], ['Phone/WhatsApp', f.phone], ['City & state', f.city],
       ['Colourway', f.colour], ['Saddle type', f.type], ['Quantity', f.qty || '1'], ['Message', f.msg],
     ]),
     wellness: (f) => lines(`Hi ${CONTACT.brand}! I'm interested in your wellness kits.`, [
-      ['Name', f.name], ['Phone/WhatsApp', f.phone], ['City & country', f.city],
+      ['Name', f.name], ['Phone/WhatsApp', f.phone], ['City & state', f.city],
       ['Kits', f.kits || 'Not sure yet, help me choose'], ['Message', f.msg],
     ]),
   };

@@ -157,7 +157,7 @@
 @media (max-width: 800px) { .footer__grid { grid-template-columns: 1fr; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .w-obj, .w-blob, .contact__pin, .sticker, .badge-spin svg:first-child { animation: none; }
+  .w-obj, .w-blob, .contact__pin, .sticker, .badge-spin > svg { animation: none; }
 }
 
 /* Without JS, hide controls that only work with it (links + form chips still cover everything). */
